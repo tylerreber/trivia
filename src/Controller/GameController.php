@@ -23,7 +23,7 @@ class GameController extends AbstractController
 {
 
     /**
-     * @route("/"), methods={"OPTIONS")
+     * @route("/new-game"), methods={"OPTIONS")
      */
     public function optionsAction(Request $request)
     {
@@ -43,7 +43,7 @@ class GameController extends AbstractController
 
 
     /**
-     * @Route("/new-game")
+     * @Route("/new-game"), methods=("GET")
      */
     public function createGame(LoggerInterface $logger, Request $request)
     {
