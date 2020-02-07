@@ -18,14 +18,12 @@ use Symfony\Component\Mercure\PublisherInterface as Stupid;
 //use App\Controller\Publisher;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
 {
 
     /**
-     * @route("/")
-     * @Method("OPTIONS")
+     * @route("/"), methods={"OPTIONS")
      */
     public function optionsAction(Request $request)
     {
