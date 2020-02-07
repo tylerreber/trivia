@@ -18,6 +18,7 @@ use Symfony\Component\Mercure\PublisherInterface as Stupid;
 //use App\Controller\Publisher;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class GameController extends AbstractController
 {
@@ -29,8 +30,6 @@ class GameController extends AbstractController
     public function optionsAction(Request $request)
     {
 
-        $logger = $this->get('logger');
-        $logger->info('^^^Request: '. $request);
         $response = new Response('', 204, [
             'Access-Control-Allow-Origin' => '*',
             'Access-Control-Allow-Credentials' => 'true',
