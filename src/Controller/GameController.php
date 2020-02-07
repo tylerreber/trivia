@@ -21,6 +21,30 @@ use Symfony\Component\HttpFoundation\Request;
 
 class GameController extends AbstractController
 {
+
+    /**
+     * @route("/")
+     * @Method("OPTIONS")
+     */
+    public function optionsAction(Request $request)
+    {
+
+        $logger = $this->get('logger');
+        $logger->info('^^^Request: '. $request);
+        $response = new Response('', 204, [
+            'Access-Control-Allow-Origin' => '*',
+            'Access-Control-Allow-Credentials' => 'true',
+            'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+            'Access-Control-Allow-Headers' => 'DNT, X-User-Token, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type',
+            'Access-Control-Max-Age' => 1728000,
+            'Content-Type' => 'text/plain charset=UTF-8',
+            'Content-Length' => 0
+        ]);
+        return $response;
+
+    }
+
+
     /**
      * @Route("/new-game")
      */
@@ -41,8 +65,9 @@ class GameController extends AbstractController
 
         $gameObj = $this->gameInfo($game);
 
+        $response =  new JsonResponse($json);
         $response = new JsonResponse(
-            ['gameId' => $game->getCode(), 'player' => array('name' => $player->getName(), 'id' => $player->getId()), 'gameObj' => $gameObj]
+            ['gameId' => $game->getCode(), 'player' => array('name' => $player->getName(), 'id' => $player->getId()), 'gameObj' => $gameObj], 200, ['Access-Control-Allow-Origin' => '*']
         );
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
