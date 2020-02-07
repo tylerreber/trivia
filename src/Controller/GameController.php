@@ -18,7 +18,7 @@ use Symfony\Component\Mercure\PublisherInterface as Stupid;
 //use App\Controller\Publisher;
 use Symfony\Component\Mercure\Update;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Symfony\Component\Routing\Annotation\Route;
 
 class GameController extends AbstractController
 {
