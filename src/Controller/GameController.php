@@ -57,7 +57,6 @@ class GameController extends AbstractController
 
         $gameObj = $this->gameInfo($game);
 
-        $response =  new JsonResponse($json);
         $response = new JsonResponse(
             ['gameId' => $game->getCode(), 'player' => array('name' => $player->getName(), 'id' => $player->getId()), 'gameObj' => $gameObj], 200, ['Access-Control-Allow-Origin' => '*']
         );
