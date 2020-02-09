@@ -122,7 +122,19 @@ class GameController extends AbstractController
     /**
      * @Route("/next-question/{gameCode}")
      */
-    public function nextQuestion(LoggerInterface $logger, Stupid $stupid, $gameCode) {
+    public function nextQuestion(Requst $request, LoggerInterface $logger, Stupid $stupid, $gameCode) {
+        if ($request->getMethod() == "OPTIONS") {
+            $response = new Response('', 204, [
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Credentials' => 'true',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers' => 'DNT, X-User-Token, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type',
+                'Access-Control-Max-Age' => 1728000,
+                'Content-Type' => 'text/plain charset=UTF-8',
+                'Content-Length' => 0
+            ]);
+            return $response;
+        }
         $repository = $this->getDoctrine()->getRepository(Question::class);
         /**
          * @var $game Game
@@ -168,6 +180,18 @@ class GameController extends AbstractController
      * @route("/answer")
      */
     public function checkAnswer(Request $request, Stupid $stupid, LoggerInterface $logger) {
+        if ($request->getMethod() == "OPTIONS") {
+            $response = new Response('', 204, [
+                'Access-Control-Allow-Origin' => '*',
+                'Access-Control-Allow-Credentials' => 'true',
+                'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers' => 'DNT, X-User-Token, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type',
+                'Access-Control-Max-Age' => 1728000,
+                'Content-Type' => 'text/plain charset=UTF-8',
+                'Content-Length' => 0
+            ]);
+            return $response;
+        }
         $em = $this->getDoctrine()->getManager();
         $answer = json_decode($request->getContent());
 
