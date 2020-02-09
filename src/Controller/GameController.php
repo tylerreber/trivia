@@ -122,7 +122,7 @@ class GameController extends AbstractController
     /**
      * @Route("/next-question/{gameCode}")
      */
-    public function nextQuestion(Requst $request, LoggerInterface $logger, Stupid $stupid, $gameCode) {
+    public function nextQuestion(Request $request, LoggerInterface $logger, Stupid $stupid, $gameCode) {
         if ($request->getMethod() == "OPTIONS") {
             $response = new Response('', 204, [
                 'Access-Control-Allow-Origin' => '*',
